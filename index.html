@@ -5,6 +5,7 @@
     <title>Apple Residency Welfare Association</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -30,41 +31,42 @@
 <!-- HERO SECTION -->
 <section class="middle">
 
+    <!-- Left Side: Welcome & Cards -->
     <div class="welcome">
         <h2>Welcome to Apple Residency</h2>
         <p>
             This website shares information about our apartment welfare activities,
-            notices and community updates.
+            notices, and community updates.
         </p>
-   <div class="cards">
 
-  <div class="card" onclick="goToPage('about.html')">
-    <h3>About</h3>
-    <p>Know about our association</p>
-  </div>
-
-  <div class="card" onclick="goToPage('committee.html')">
-    <h3>Committee</h3>
-    <p>View committee members</p>
-  </div>
-
-  <div class="card" onclick="goToPage('notices.html')">
-    <h3>Notices</h3>
-    <p>Latest updates</p>
-  </div>
-
-  <div class="card" onclick="goToPage('login.html')">
-    <h3>Login</h3>
-    <p>Member access</p>
-  </div>
-
-</div>
-
-        <button>Learn More</button>
+        <!-- Cards -->
+        <div class="cards">
+            <div class="card" onclick="window.location.href='about.html'">
+                <i class="fas fa-users"></i>
+                <h3>About</h3>
+                <p>Know about our association</p>
+            </div>
+            <div class="card" onclick="window.location.href='committee.html'">
+                <i class="fas fa-user-tie"></i>
+                <h3>Committee</h3>
+                <p>View committee members</p>
+            </div>
+            <div class="card" onclick="window.location.href='notices.html'">
+                <i class="fas fa-bell"></i>
+                <h3>Notices</h3>
+                <p>Latest updates</p>
+            </div>
+            <div class="card" onclick="window.location.href='login.html'">
+                <i class="fas fa-sign-in-alt"></i>
+                <h3>Login</h3>
+                <p>Member access</p>
+            </div>
+        </div>
     </div>
 
+    <!-- Right Side: Building Image -->
     <div class="image">
-        <img src="images/building.png">
+        <img src="images/building.png" alt="Building">
     </div>
 
 </section>

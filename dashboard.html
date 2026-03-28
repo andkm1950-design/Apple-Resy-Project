@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Apple Residency</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="top">
+    <div class="top-bar">
+        <img src="images/banner1.png" class="banner" alt="Apple Residency Banner">
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="committee.html">Committee</a>
+        <a href="notices.html">Notices</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<!-- DASHBOARD HERO SECTION -->
+<section class="middle">
+    <div class="welcome">
+        <h2>Welcome, Admin!</h2>
+        <p>
+            This is your dashboard. You can manage notices, view committee members,
+            and access other administrative tools.
+        </p>
+        <!-- Trial Notice -->
+<div class="notice-banner fade-bounce">
+    <p>🔔 Trial Notice: This is a sample notice for testing purposes.</p>
+</div>
+
+        <!-- Dashboard Cards -->
+        <div class="cards">
+            <div class="card" onclick="window.location.href='notices.html'">
+                <i class="fas fa-bell"></i>
+                <h3>Manage Notices</h3>
+                <p>Create or update notices</p>
+            </div>
+            <div class="card" onclick="window.location.href='committee.html'">
+                <i class="fas fa-user-tie"></i>
+                <h3>Committee Members</h3>
+                <p>View or edit committee</p>
+            </div>
+            <div class="card" onclick="window.location.href='about.html'">
+                <i class="fas fa-info-circle"></i>
+                <h3>About Association</h3>
+                <p>Edit information</p>
+            </div>
+            <div class="card" onclick="window.location.href='index.html'">
+                <i class="fas fa-sign-out-alt"></i>
+                <h3>Logout</h3>
+                <p>Return to Home</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Side Image -->
+    <div class="image">
+        <img src="images/building.png" alt="Building">
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bottom">
+    <p>© 2026 Apple Residency Welfare Association</p>
+</footer>
+
+</body>
+</html>
