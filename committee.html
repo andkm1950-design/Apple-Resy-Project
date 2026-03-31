@@ -1,43 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Committee</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Committee Members</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        /* HEADER */
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* CONTAINER */
+        .container {
+            padding: 20px;
+        }
+
+        /* CARD */
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #2196f3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background: #1976d2;
+        }
+
+        /* VIDEO */
+        video {
+            border-radius: 10px;
+        }
+
+        /* BACK LINK */
+        .back {
+            display: inline-block;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
 </head>
 
 <body>
 
-<header class="top">
-    <div class="top-bar">
-        <img src="images/banner1.png" class="banner">
-    </div>
-
-    <nav class="menu">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="committee.html">Committee</a>
-        <a href="notices.html">Notices</a>
-        <a href="login.html">Login</a>
-    </nav>
+<header>
+    <h1>Apple Residency Welfare Association</h1>
 </header>
 
-<section class="middle">
-    <div class="welcome">
-       <h2>Committee Members</h2>
+<div class="container">
 
-<iframe 
-  src="https://1drv.ms/p/c/101932d389d716b2/IQR58nfLM4bMQa9jj7t9nFLCAZGRsUXUbwEH9JX4iTFZHak?em=2"
-  width="100%" 
-  height="500px"
-  style="border-radius:10px;">
-</iframe>
+    <!-- Back to Dashboard -->
+    <a href="dashboard.html" class="back">⬅ Back to Dashboard</a>
+
+    <!-- Committee Section -->
+    <div class="card">
+        <h2>Committee Members</h2>
+
+        <!-- 🎬 VIDEO (USE AFTER YOU CREATE MP4) -->
+        <!--
+        <video width="100%" controls autoplay muted>
+            <source src="videos/committee.mp4" type="video/mp4">
+        </video>
+        -->
+
+        <!-- 📊 CURRENT WORKING OPTION (OneDrive Link) -->
+        <p>Click below to view full presentation:</p>
+
+        <a href="https://1drv.ms/p/c/101932d389d716b2/IQB58nfLM4bMQa9jj7t9nFLCARHBvbj_fivNIa8QNhaFLOc?e=hzWoTE" 
+           target="_blank" class="btn">
+           ▶ View Committee Presentation
+        </a>
+
     </div>
-</section>
 
-<footer class="bottom">
-    <p>© 2026 Apple Residency Welfare Association</p>
-</footer>
+</div>
 
 </body>
 </html>
