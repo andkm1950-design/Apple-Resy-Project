@@ -38,29 +38,43 @@ nav a {
 .member-card {
     background: white;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: 0.3s;
 }
 
 .member-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
 }
 
+/* IMAGE STYLE */
 .member-card img {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     object-fit: cover;
+    border: 4px solid #2c3e50;
+    margin-bottom: 10px;
 }
 
+/* NAME */
 .member-card h3 {
-    margin: 10px 0 5px;
+    margin: 8px 0 4px;
+    font-size: 16px;
+    color: #2c3e50;
 }
 
+/* ROLE */
 .member-card p {
-    color: gray;
+    color: #777;
+    font-size: 14px;
+}
+
+/* HIGHLIGHT CARD */
+.highlight {
+    border: 2px solid #2c3e50;
+    background: linear-gradient(to bottom, #ffffff, #f0f4f8);
 }
 </style>
 </head>
@@ -97,11 +111,11 @@ nav a {
         <h3>Mr. KARIKALAN</h3>
         <p>General Secretary</p>
     </div>
-    <div class="member-card">
-        <img src="images/jt.secretary1.jpg" alt="Joint Secretary1">
-        <h3>Mr. AND KRISHNAMOORTHY</h3>
-        <p>Joint Secretary1</p>
-    </div>
+    <div class="member-card highlight">
+    <img src="images/jt-secretary1.jpg" alt="Joint Secretary">
+    <h3>AND. KRISHNAMOORTHY</h3>
+    <p>Joint Secretary</p>
+</div>
     <div class="member-card">
         <img src="images/jt.secretary2.jpg" alt="Joint Secretary2">
         <h3>Mrs. SATHYA VELUSAMY</h3>
@@ -123,7 +137,7 @@ nav a {
         <h3>Mr. FEROSE KHAN</h3>
         <p>Member</p>
     </div>
- <div class="member-card">
+    <div class="member-card">
         <img src="images/member3.jpg" alt="Member">
         <h3>Mrs. SARANYA</h3>
         <p>Member</p>
