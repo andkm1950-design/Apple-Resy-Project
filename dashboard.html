@@ -33,6 +33,9 @@
         /* CONTENT */
         .container {
             padding: 20px;
+            display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
         }
 
         .card {
@@ -41,7 +44,15 @@
             margin: 15px 0;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+             transition: 0.3s;
+        cursor: pointer;
         }
+         .card:hover {
+        transform: translateY(-5px);
+    }
+
+
+        
     </style>
 </head>
 
@@ -59,9 +70,22 @@
 <div class="container">
 
     <div class="card">
-        <h2>Welcome to Dashboard</h2>
-        <p>Members area - secured content</p>
-    </div>
+    <h2>Maintenance Details</h2>
+    <p>View monthly maintenance dues and payment status.</p>
+    <a href="maintenance.html">View Details</a>
+</div>
+
+<div class="card">
+    <h2>Association Documents</h2>
+    <p>Access important documents (restricted).</p>
+    <a href="documents.html">Open Documents</a>
+</div>
+
+<div class="card">
+    <h2>Notices & Announcements</h2>
+    <p>Latest updates and circulars.</p>
+    <a href="notices.html">View Notices</a>
+</div>
 
 </div>
 
