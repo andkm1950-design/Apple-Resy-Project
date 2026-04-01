@@ -56,6 +56,7 @@ nav a {
     object-fit: cover;
     border: 4px solid #2c3e50;
     margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);  
 }
 
 /* NAME */
@@ -66,9 +67,13 @@ nav a {
 }
 
 /* ROLE */
-.member-card p {
-    color: #777;
-    font-size: 14px;
+.role {
+    display: inline-block;
+    background: #2c3e50;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
 }
 
 /* HIGHLIGHT CARD */
@@ -114,7 +119,7 @@ nav a {
     <div class="member-card highlight">
     <img src="images/jt-secretary1.jpg" alt="Joint Secretary">
     <h3>AND. KRISHNAMOORTHY</h3>
-    <p>Joint Secretary</p>
+    <p class="role">Joint Secretary</p>
 </div>
     <div class="member-card">
         <img src="images/jt.secretary2.jpg" alt="Joint Secretary2">
