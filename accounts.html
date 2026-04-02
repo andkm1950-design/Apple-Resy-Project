@@ -35,7 +35,7 @@ form input[type="submit"]:hover { background-color:#219150; }
 
 <!-- Banner -->
 <div class="banner">
-  <img src="banner1.png" alt="Apple Residency Banner">
+  <img src="banner1.jpg" alt="Apple Residency Banner">
 </div>
 
 <!-- Nav -->
@@ -49,7 +49,6 @@ form input[type="submit"]:hover { background-color:#219150; }
 </div>
 
 <h1>📊 Accounts Dashboard FY 24-25</h1>
-<h2>Apple Residency Welfare Association</h2>
 
 <!-- Summary Cards -->
 <div class="summary-cards">
@@ -111,6 +110,8 @@ form input[type="submit"]:hover { background-color:#219150; }
     <option>Stock / Assets</option>
     <option>Gift & Donations</option>
     <option>Sundry Expense</option>
+    <option>Stationery</option>
+    <option>Fees & Taxes</option>
   </select>
   <label>Transaction Type:</label>
   <select id="transactionType" required>
@@ -128,6 +129,7 @@ form input[type="submit"]:hover { background-color:#219150; }
 </form>
 
 <script>
+// Password protection
 const password = "Treasurer2024";
 let authenticated = false;
 while(!authenticated){
@@ -148,46 +150,34 @@ const periodFilter = document.getElementById('periodFilter');
 // Load previous balances
 const prevBalances = JSON.parse(localStorage.getItem('prevBalances') || '{"cash":0,"bank":0}');
 
-// --- Sample Entries ---
+// Sample entries including all categories
 let entries = [
-  // Opening balances
   {date:'01/04/2024', name:'Opening Balance - B/D', description:'Auto-filled', category:'Opening Balance', transactionType:'credit', paymentMode:'bank', credit:prevBalances.bank, debit:0},
   {date:'01/04/2024', name:'Opening Balance - B/D', description:'Auto-filled', category:'Opening Balance', transactionType:'credit', paymentMode:'cash', credit:prevBalances.cash, debit:0},
-  // Sample MC Subscription
   {date:'05/04/2024', name:'John Doe', description:'April maintenance', category:'MC Subscription', transactionType:'credit', paymentMode:'bank', credit:1500, debit:0},
   {date:'07/04/2024', name:'Jane Smith', description:'April maintenance', category:'MC Subscription', transactionType:'credit', paymentMode:'cash', credit:1500, debit:0},
-  // Corpus Fund
   {date:'10/04/2024', name:'Mr. Kumar', description:'Corpus Fund Contribution', category:'Corpus Fund', transactionType:'credit', paymentMode:'bank', credit:5000, debit:0},
-  // AMC Fund
   {date:'12/04/2024', name:'AMC Corp', description:'AMC Fund Payment', category:'AMC Fund', transactionType:'credit', paymentMode:'bank', credit:2000, debit:0},
-  // Donations
   {date:'15/04/2024', name:'Mrs. Patel', description:'Charity Donation', category:'Donations', transactionType:'credit', paymentMode:'cash', credit:1000, debit:0},
-  // Maintenance Expense
   {date:'18/04/2024', name:'Service Provider', description:'Plumbing Maintenance', category:'Maintenance', transactionType:'debit', paymentMode:'bank', credit:0, debit:1200},
-  // Salary & Wages
   {date:'20/04/2024', name:'Cleaner', description:'April Salary', category:'Salary & Wages', transactionType:'debit', paymentMode:'bank', credit:0, debit:2500},
-  // Electricity Bill
   {date:'22/04/2024', name:'Electricity Board', description:'Monthly Bill', category:'Electricity Bill', transactionType:'debit', paymentMode:'bank', credit:0, debit:3000},
-  // Repairs
   {date:'25/04/2024', name:'Repair Co', description:'Roof Repair', category:'Repairs', transactionType:'debit', paymentMode:'bank', credit:0, debit:1800},
-  // Stock / Assets
-  {date:'27/04/2024', name:'Stationery Shop', description:'Office Stationery', category:'Stock / Assets', transactionType:'debit', paymentMode:'cash', credit:0, debit:600},
-  // Gift & Donations
+  {date:'27/04/2024', name:'Stationery Shop', description:'Office Stationery', category:'Stationery', transactionType:'debit', paymentMode:'cash', credit:0, debit:600},
   {date:'28/04/2024', name:'Community Event', description:'Gifts', category:'Gift & Donations', transactionType:'debit', paymentMode:'cash', credit:0, debit:1200},
-  // Sundry Expense
+  {date:'29/04/2024', name:'Tax Payment', description:'Quarterly Tax', category:'Fees & Taxes', transactionType:'debit', paymentMode:'bank', credit:0, debit:2000},
   {date:'30/04/2024', name:'Miscellaneous', description:'Misc Expense', category:'Sundry Expense', transactionType:'debit', paymentMode:'cash', credit:0, debit:500}
 ];
 
 function calculateTotals(filteredEntries){
-  let totalCredit=0, totalDebit=0, balance=0, bankCredit=0, bankDebit=0, bankBalance=0;
+  let totalCredit=0, totalDebit=0, balance=0, bankCredit=0, bankDebit=0;
   let runningBalance=0, runningBank=0, runningCash=0;
   tableBody.innerHTML='';
   (filteredEntries||entries).forEach(e=>{
     runningBalance += e.credit - e.debit;
-    if(e.paymentMode==='bank'){ runningBank += e.credit - e.debit; }
+    if(e.paymentMode==='bank'){ runningBank += e.credit - e.debit; bankCredit += e.credit; bankDebit += e.debit; }
     else { runningCash += e.credit - e.debit; }
     totalCredit += e.credit; totalDebit += e.debit;
-    if(e.paymentMode==='bank'){ bankCredit += e.credit; bankDebit += e.debit; bankBalance=runningBank; }
     tableBody.insertAdjacentHTML('beforeend', `<tr>
       <td>${e.date}</td><td>${e.name}</td><td>${e.description}</td><td>${e.category}</td>
       <td>${e.credit}</td><td>${e.debit}</td><td>${runningBalance}</td>
