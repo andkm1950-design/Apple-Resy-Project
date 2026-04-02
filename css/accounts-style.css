@@ -1,0 +1,139 @@
+/* accounts-style.css */
+
+/* General body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f7f9;
+}
+
+/* Banner */
+.banner {
+    width: 100%;
+    overflow: hidden;
+}
+.banner img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;       /* optional: max banner height */
+    object-fit: contain;      /* ensures no top/bottom cut */
+    display: block;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #87ceeb;  /* light sky-blue nav */
+}
+
+nav a {
+    margin: 0 15px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a.logout-btn {
+    margin-left: auto;
+    background: #ff6b6b;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+/* Entry Form */
+.entry-form {
+    margin: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.entry-form h3 {
+    margin-top: 0;
+}
+
+.entry-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.entry-form input,
+.entry-form select {
+    width: 100%;
+    padding: 6px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.entry-form button {
+    margin-top: 12px;
+    padding: 8px 15px;
+    background-color: #87ceeb;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Day Book Table */
+.day-book {
+    margin: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.day-book h3 {
+    margin-top: 0;
+}
+
+.day-book table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.day-book th,
+.day-book td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.day-book th {
+    background: #e0f0ff;
+}
+
+/* Highlight opening/closing balances */
+.day-book tr.opening td,
+.day-book tr.closing td {
+    font-weight: bold;
+    background-color: #f0f8ff;
+}
+
+/* Buttons in table */
+.day-book button {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background: #87ceeb;
+    color: black;
+}
+
+/* Optional: prevent selection (basic copy protection) */
+body {
+    -webkit-user-select: none;  /* Chrome/Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+ */
+    user-select: none;
+}

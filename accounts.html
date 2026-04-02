@@ -2,33 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>📊 Accounts Dashboard - FY 24-25</title>
+  <title>Apple Residency Accounts Dashboard FY 24-25</title>
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* Basic CSS for layout and table */
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
-    .banner img { width: 100%; height: auto; display: block; }
-    nav { background: skyblue; display: flex; justify-content: space-between; padding: 10px 20px; }
-    nav a { color: black; text-decoration: none; margin-right: 15px; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    .entry-form, .day-book { background: #fff; margin: 20px auto; padding: 20px; border-radius: 8px; max-width: 900px; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
-    .entry-form label, .entry-form input, .entry-form select, .entry-form button { display: block; margin-bottom: 10px; width: 100%; }
-    .entry-form button { width: auto; background: #4CAF50; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
-    .entry-form button:hover { background: #45a049; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px;}
-    table, th, td { border: 1px solid #ddd; }
-    th, td { padding: 8px; text-align: center; }
-    th { background-color: #4CAF50; color: white; }
-  </style>
+  <link rel="stylesheet" href="css/accounts-style.css">
+   
 </head>
 <body>
 
-  <!-- Banner -->
+  <!-- Banner & Nav -->
   <div class="banner">
-    <img src="images/banner1.png" alt="Apple Residency Banner">
+    <img src="images/banner1.png" alt="Apple Residency Banner" class="banner-img">
   </div>
-
-  <!-- Navigation -->
   <nav>
     <div class="nav-left">
       <a href="index.html">Home</a>
@@ -41,55 +25,57 @@
     </div>
   </nav>
 
-  <!-- Dashboard Heading -->
-  <h2 style="text-align:center; margin-top:20px;">📊 Accounts Dashboard - FY 24-25</h2>
+  <h2>📊 Accounts Dashboard - FY 24-25</h2>
 
   <!-- Entry Form -->
-  <form id="entryForm" class="entry-form">
+  <div class="entry-form">
     <h3>Add Entry</h3>
-    <label>Date:</label>
-    <input type="text" id="entryDate" placeholder="dd/mm/yyyy">
-    
-    <label>Name:</label>
-    <input type="text" id="entryName" placeholder="Member/Payee">
-    
-    <label>Description:</label>
-    <input type="text" id="entryDesc" placeholder="Description">
-    
-    <label>Category:</label>
-    <select id="entryCategory">
-      <option value="MC Subscription">MC Subscription</option>
-      <option value="Corpus Fund">Corpus Fund</option>
-      <option value="AMC Fund">AMC Fund</option>
-      <option value="Donations">Donations</option>
-      <option value="Maintenance">Maintenance</option>
-      <option value="Salary & Wages">Salary & Wages</option>
-      <option value="Electricity Bill">Electricity Bill</option>
-      <option value="Repairs">Repairs</option>
-      <option value="Stock/Assets">Stock/Assets</option>
-      <option value="Gift & Donations">Gift & Donations</option>
-      <option value="Sundry Expense">Sundry Expense</option>
-      <option value="Stationary">Stationary</option>
-      <option value="Fees & Taxes">Fees & Taxes</option>
-    </select>
+    <form id="entryForm">
+      <label>Date:</label>
+      <input type="text" id="entryDate" placeholder="dd/mm/yyyy" required>
 
-    <label>Payment Mode:</label>
-    <select id="entryPaymentMode">
-      <option value="Cash">Cash</option>
-      <option value="Bank">Bank</option>
-      <option value="G-Pay">G-Pay</option>
-      <option value="NEFT">NEFT</option>
-      <option value="Other">Other</option>
-    </select>
+      <label>Name:</label>
+      <input type="text" id="entryName" placeholder="Member / Payee" required>
 
-    <label>Credit (₹):</label>
-    <input type="number" id="entryCredit" value="0">
+      <label>Description:</label>
+      <input type="text" id="entryDesc" placeholder="Description" required>
 
-    <label>Debit (₹):</label>
-    <input type="number" id="entryDebit" value="0">
+      <label>Category:</label>
+      <select id="entryCategory" required>
+        <option value="">--Select--</option>
+        <option>MC Subscription</option>
+        <option>Corpus Fund</option>
+        <option>AMC Fund</option>
+        <option>Donations</option>
+        <option>Maintenance</option>
+        <option>Salary & Wages</option>
+        <option>Electricity Bill</option>
+        <option>Repairs</option>
+        <option>Stock/Assets</option>
+        <option>Gift & Donations</option>
+        <option>Sundry Expense</option>
+        <option>Stationery</option>
+        <option>Fees & Taxes</option>
+      </select>
 
-    <button type="button" id="addEntryBtn">Add Entry</button>
-  </form>
+      <label>Payment Mode:</label>
+      <select id="entryPayment" required>
+        <option value="">--Select--</option>
+        <option>Cash</option>
+        <option>Bank</option>
+        <option>G-Pay</option>
+        <option>NEFT/RTGS</option>
+      </select>
+
+      <label>Credit (₹):</label>
+      <input type="number" id="entryCredit" value="0" min="0">
+
+      <label>Debit (₹):</label>
+      <input type="number" id="entryDebit" value="0" min="0">
+
+      <button type="submit">Submit Entry</button>
+    </form>
+  </div>
 
   <!-- Day Book Table -->
   <div class="day-book">
@@ -102,18 +88,22 @@
           <th>Description</th>
           <th>Category</th>
           <th>Payment Mode</th>
-          <th>Credit (₹)</th>
-          <th>Debit (₹)</th>
+          <th>Cash Credit</th>
+          <th>Cash Debit</th>
+          <th>Bank Credit</th>
+          <th>Bank Debit</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Sample entries -->
+        <!-- Opening Balance Row -->
         <tr>
           <td>01/09/2024</td>
           <td>Opening Balance</td>
           <td>Opening Balance</td>
           <td>Cash/Bank</td>
           <td>Bank</td>
+          <td>0</td>
+          <td>0</td>
           <td>43325</td>
           <td>0</td>
         </tr>
@@ -121,45 +111,92 @@
     </table>
   </div>
 
-  <!-- JavaScript -->
+  <!-- Scripts -->
   <script>
     // Password Lock
     const password = "Treasurer2024";
-    let inputPass = prompt("Enter Treasurer Password:");
-    if(inputPass !== password){
-      alert("Incorrect password! Access denied.");
-      document.body.innerHTML = "<h1 style='text-align:center;margin-top:50px;'>ACCESS DENIED</h1>";
-      throw new Error("Unauthorized");
+    let userPass = prompt("Enter Treasurer Password:");
+    if(userPass !== password) {
+      alert("Incorrect Password. Access Denied.");
+      document.body.innerHTML = "<h1>ACCESS DENIED</h1>";
     }
 
-    // Add Entry Button
-    document.getElementById('addEntryBtn').addEventListener('click', function(){
-      // Get values
-      let date = document.getElementById('entryDate').value;
-      let name = document.getElementById('entryName').value;
-      let desc = document.getElementById('entryDesc').value;
-      let category = document.getElementById('entryCategory').value;
-      let paymentMode = document.getElementById('entryPaymentMode').value;
-      let credit = parseFloat(document.getElementById('entryCredit').value) || 0;
-      let debit = parseFloat(document.getElementById('entryDebit').value) || 0;
+    // Add Entry Form Logic
+    const form = document.getElementById('entryForm');
+    const dayBook = document.getElementById('dayBook').getElementsByTagName('tbody')[0];
 
-      // Add row to table
-      let table = document.getElementById('dayBook').getElementsByTagName('tbody')[0];
-      let newRow = table.insertRow();
-      newRow.innerHTML = `
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const date = document.getElementById('entryDate').value;
+      const name = document.getElementById('entryName').value;
+      const desc = document.getElementById('entryDesc').value;
+      const category = document.getElementById('entryCategory').value;
+      const payment = document.getElementById('entryPayment').value;
+      const credit = parseFloat(document.getElementById('entryCredit').value) || 0;
+      const debit = parseFloat(document.getElementById('entryDebit').value) || 0;
+
+      // Determine Cash/Bank columns
+      let cashCr = 0, cashDr = 0, bankCr = 0, bankDr = 0;
+      if(payment === "Cash"){
+        cashCr = credit;
+        cashDr = debit;
+      } else {
+        bankCr = credit;
+        bankDr = debit;
+      }
+
+      // Append row
+      const row = dayBook.insertRow();
+      row.innerHTML = `
         <td>${date}</td>
         <td>${name}</td>
         <td>${desc}</td>
         <td>${category}</td>
-        <td>${paymentMode}</td>
-        <td>${credit}</td>
-        <td>${debit}</td>
+        <td>${payment}</td>
+        <td>${cashCr}</td>
+        <td>${cashDr}</td>
+        <td>${bankCr}</td>
+        <td>${bankDr}</td>
       `;
 
       // Reset form
-      document.getElementById('entryForm').reset();
-      document.getElementById('entryDate').focus();
+      form.reset();
+
+      // Update Closing Balance dynamically
+      updateClosingBalance();
     });
+
+    function updateClosingBalance(){
+      const rows = dayBook.rows;
+      let cashBalance = 0, bankBalance = 0;
+      for(let i=0;i<rows.length;i++){
+        const cCr = parseFloat(rows[i].cells[5].textContent) || 0;
+        const cDr = parseFloat(rows[i].cells[6].textContent) || 0;
+        const bCr = parseFloat(rows[i].cells[7].textContent) || 0;
+        const bDr = parseFloat(rows[i].cells[8].textContent) || 0;
+        cashBalance += (cCr - cDr);
+        bankBalance += (bCr - bDr);
+      }
+      // Remove old closing balance if exists
+      const lastRow = rows[rows.length-1];
+      if(lastRow.cells[1].textContent === "Closing Balance"){
+        dayBook.deleteRow(rows.length-1);
+      }
+      // Append new closing balance
+      const row = dayBook.insertRow();
+      row.innerHTML = `
+        <td>--</td>
+        <td>Closing Balance</td>
+        <td>Closing Balance</td>
+        <td>Cash/Bank</td>
+        <td>--</td>
+        <td>${cashBalance}</td>
+        <td>0</td>
+        <td>${bankBalance}</td>
+        <td>0</td>
+      `;
+    }
   </script>
 
 </body>
