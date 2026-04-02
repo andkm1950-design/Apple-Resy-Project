@@ -1,200 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apple Residency Accounts Dashboard - FY 24-25</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>📊 Accounts Dashboard - FY 24-25</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Basic CSS for layout and table */
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+    .banner img { width: 100%; height: auto; display: block; }
+    nav { background: skyblue; display: flex; justify-content: space-between; padding: 10px 20px; }
+    nav a { color: black; text-decoration: none; margin-right: 15px; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    .entry-form, .day-book { background: #fff; margin: 20px auto; padding: 20px; border-radius: 8px; max-width: 900px; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+    .entry-form label, .entry-form input, .entry-form select, .entry-form button { display: block; margin-bottom: 10px; width: 100%; }
+    .entry-form button { width: auto; background: #4CAF50; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+    .entry-form button:hover { background: #45a049; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px;}
+    table, th, td { border: 1px solid #ddd; }
+    th, td { padding: 8px; text-align: center; }
+    th { background-color: #4CAF50; color: white; }
+  </style>
 </head>
 <body>
 
-<!-- Banner -->
-<div class="banner">
-  <img src="images/banner1.png" alt="Apple Residency Banner">
-</div>
-
-<!-- Navigation -->
-<div class="nav">
-  <div>
-    <a href="index.html" class="nav-btn">Home</a>
-    <a href="about.html" class="nav-btn">About</a>
-    <a href="committee.html" class="nav-btn">Committee</a>
-    <a href="login.html" class="nav-btn">Login</a>
+  <!-- Banner -->
+  <div class="banner">
+    <img src="images/banner1.png" alt="Apple Residency Banner">
   </div>
-  <button onclick="logout()">Logout</button>
-</div>
 
-<h2>📊 Accounts Dashboard - FY 24-25</h2>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="committee.html">Committee</a>
+      <a href="notices.html">Notices</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Logout</a>
+    </div>
+  </nav>
 
-<!-- Entry Form -->
-<form id="entryForm" class="entry-form">
-  <h3>Add Entry</h3>
-  <label>Date:</label>
-  <input type="text" id="entryDate" placeholder="dd/mm/yyyy">
-  <label>Name:</label>
-  <input type="text" id="entryName" placeholder="Member/Payee">
-  <label>Description:</label>
-  <input type="text" id="entryDesc" placeholder="Description">
-  <label>Category:</label>
-  <select id="entryCategory">
-    <option value="MC Subscription">MC Subscription</option>
-    <option value="Corpus Fund">Corpus Fund</option>
-    <option value="AMC Fund">AMC Fund</option>
-    <option value="Donations">Donations</option>
-    <option value="Maintenance">Maintenance</option>
-    <option value="Salary & Wages">Salary & Wages</option>
-    <option value="Electricity Bill">Electricity Bill</option>
-    <option value="Repairs">Repairs</option>
-    <option value="Stock/Assets">Stock/Assets</option>
-    <option value="Gift & Donations">Gift & Donations</option>
-    <option value="Sundry Expense">Sundry Expense</option>
-    <option value="Stationary">Stationary</option>
-    <option value="Fees & Taxes">Fees & Taxes</option>
-  </select>
-  <label>Payment Mode:</label>
-  <select id="entryPaymentMode">
-    <option value="Cash">Cash</option>
-    <option value="Bank">Bank</option>
-    <option value="G-Pay">G-Pay</option>
-    <option value="NEFT">NEFT</option>
-    <option value="Other">Other</option>
-  </select>
-  <label>Credit (₹):</label>
-  <input type="number" id="entryCredit" value="0">
-  <label>Debit (₹):</label>
-  <input type="number" id="entryDebit" value="0">
-  <button type="submit">submit</button>
-</form>
+  <!-- Dashboard Heading -->
+  <h2 style="text-align:center; margin-top:20px;">📊 Accounts Dashboard - FY 24-25</h2>
 
-<!-- Day Book Table -->
-<h3>📒 Day Book</h3>Treasurer2024
+  <!-- Entry Form -->
+  <form id="entryForm" class="entry-form">
+    <h3>Add Entry</h3>
+    <label>Date:</label>
+    <input type="text" id="entryDate" placeholder="dd/mm/yyyy">
+    
+    <label>Name:</label>
+    <input type="text" id="entryName" placeholder="Member/Payee">
+    
+    <label>Description:</label>
+    <input type="text" id="entryDesc" placeholder="Description">
+    
+    <label>Category:</label>
+    <select id="entryCategory">
+      <option value="MC Subscription">MC Subscription</option>
+      <option value="Corpus Fund">Corpus Fund</option>
+      <option value="AMC Fund">AMC Fund</option>
+      <option value="Donations">Donations</option>
+      <option value="Maintenance">Maintenance</option>
+      <option value="Salary & Wages">Salary & Wages</option>
+      <option value="Electricity Bill">Electricity Bill</option>
+      <option value="Repairs">Repairs</option>
+      <option value="Stock/Assets">Stock/Assets</option>
+      <option value="Gift & Donations">Gift & Donations</option>
+      <option value="Sundry Expense">Sundry Expense</option>
+      <option value="Stationary">Stationary</option>
+      <option value="Fees & Taxes">Fees & Taxes</option>
+    </select>
 
-<table id="dayBook">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Credit (₹)</th>
-      <th>Debit (₹)</th>
-      <th>Balance (₹)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>01/04/2024</td>
-      <td>-</td>
-      <td>Opening Balance</td>
-      <td>-</td>
-      <td id="obCredit">43325</td>
-      <td id="obDebit">0</td>
-      <td id="obBalance">43325</td>
-    </tr>
-    <!-- Sample entries for testing -->
-    <tr>
-      <td>05/04/2024</td><td>Member A</td><td>Maintenance Subscription</td><td>MC Subscription</td><td>5000</td><td>0</td><td>48325</td>
-    </tr>
-    <tr>
-      <td>10/04/2024</td><td>Employee X</td><td>Cleaning Salary</td><td>Salary & Wages</td><td>0</td><td>6000</td><td>42325</td>
-    </tr>
-    <tr>
-      <td>15/04/2024</td><td>Electricity Co.</td><td>Electricity Bill</td><td>Electricity Bill</td><td>0</td><td>2000</td><td>40325</td>
-    </tr>
-    <tr>
-      <td>30/04/2024</td>
-      <td>-</td>
-      <td>Closing Balance</td>
-      <td>-</td>
-      <td id="cbCredit">0</td>
-      <td id="cbDebit">0</td>
-      <td id="cbBalance">40325</td>
-    </tr>
-  </tbody>
-</table>
+    <label>Payment Mode:</label>
+    <select id="entryPaymentMode">
+      <option value="Cash">Cash</option>
+      <option value="Bank">Bank</option>
+      <option value="G-Pay">G-Pay</option>
+      <option value="NEFT">NEFT</option>
+      <option value="Other">Other</option>
+    </select>
 
-<!-- Financial Abstract -->
-<div class="fin-abstract">
-  <h3>Financial Abstract</h3>
-  <label>View by:</label>
-  <select id="abstractView" onchange="updateAbstract()">
-    <option value="month">Month</option>
-    <option value="quarter">Quarter</option>
-    <option value="halfyear">Half-Year</option>
-    <option value="year">Year</option>
-  </select>
-  <div id="abstractResult" style="margin-top:10px;"></div>
-</div>
+    <label>Credit (₹):</label>
+    <input type="number" id="entryCredit" value="0">
 
-<script>
-// Treasurer password security
-const password = "Treasurer2024";
-let authenticated = false;
+    <label>Debit (₹):</label>
+    <input type="number" id="entryDebit" value="0">
 
-function checkPassword() {
-  let input = prompt("Enter Treasurer Password:");
-  if(input === password) { authenticated = true; }
-  else { alert("Wrong password! Page locked."); document.body.innerHTML="Access Denied"; }
-}
-checkPassword();
+    <button type="button" id="addEntryBtn">Add Entry</button>
+  </form>
 
-// Disable right-click & selection
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('selectstart', e => e.preventDefault());
+  <!-- Day Book Table -->
+  <div class="day-book">
+    <h3>Day Book - September 2024</h3>
+    <table id="dayBook">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Payment Mode</th>
+          <th>Credit (₹)</th>
+          <th>Debit (₹)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Sample entries -->
+        <tr>
+          <td>01/09/2024</td>
+          <td>Opening Balance</td>
+          <td>Opening Balance</td>
+          <td>Cash/Bank</td>
+          <td>Bank</td>
+          <td>43325</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>05/09/2024</td>
+          <td>Member A</td>
+          <td>Maintenance Fee</td>
+          <td>MC Subscription</td>
+          <td>G-Pay</td>
+          <td>5000</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>10/09/2024</td>
+          <td>Vendor B</td>
+          <td>Cleaning Salary</td>
+          <td>Salary & Wages</td>
+          <td>Bank</td>
+          <td>0</td>
+          <td>600</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-// Logout
-function logout() { window.location.href='index.html'; }
+  <!-- JavaScript -->
+  <script>
+    // Password Lock
+    const password = "Treasurer2024";
+    let inputPass = prompt("Enter Treasurer Password:");
+    if(inputPass !== password){
+      alert("Incorrect password! Access denied.");
+      document.body.innerHTML = "<h1 style='text-align:center;margin-top:50px;'>ACCESS DENIED</h1>";
+      throw new Error("Unauthorized");
+    }
 
-// Add entry dynamically
-function addEntry() {
-  if(!authenticated){ alert("Not authorized."); return; }
-  let table = document.getElementById("dayBook").getElementsByTagName('tbody')[0];
-  let date = document.getElementById("entryDate").value;
-  let name = document.getElementById("entryName").value;
-  let desc = document.getElementById("entryDesc").value;
-  let category = document.getElementById("entryCategory").value;
-  let credit = parseFloat(document.getElementById("entryCredit").value) || 0;
-  let debit = parseFloat(document.getElementById("entryDebit").value) || 0;
+    // Add Entry Button
+    document.getElementById('addEntryBtn').addEventListener('click', function(){
+      // Get values
+      let date = document.getElementById('entryDate').value;
+      let name = document.getElementById('entryName').value;
+      let desc = document.getElementById('entryDesc').value;
+      let category = document.getElementById('entryCategory').value;
+      let paymentMode = document.getElementById('entryPaymentMode').value;
+      let credit = parseFloat(document.getElementById('entryCredit').value) || 0;
+      let debit = parseFloat(document.getElementById('entryDebit').value) || 0;
 
-  // Previous balance
-  let lastRow = table.rows[table.rows.length-2]; // before closing row
-  let prevBalance = parseFloat(lastRow.cells[6].innerText);
+      // Add row to table
+      let table = document.getElementById('dayBook').getElementsByTagName('tbody')[0];
+      let newRow = table.insertRow();
+      newRow.innerHTML = `
+        <td>${date}</td>
+        <td>${name}</td>
+        <td>${desc}</td>
+        <td>${category}</td>
+        <td>${paymentMode}</td>
+        <td>${credit}</td>
+        <td>${debit}</td>
+      `;
 
-  let newBalance = prevBalance + credit - debit;
+      // Reset form
+      document.getElementById('entryForm').reset();
+      document.getElementById('entryDate').focus();
+    });
+  </script>
 
-  // Insert before closing row
-  let row = table.insertRow(table.rows.length-1);
-  row.insertCell(0).innerText = date;
-  row.insertCell(1).innerText = name;
-  row.insertCell(2).innerText = desc;
-  row.insertCell(3).innerText = category;
-  row.insertCell(4).innerText = credit;
-  row.insertCell(5).innerText = debit;
-  row.insertCell(6).innerText = newBalance;
-
-  // Update closing balance
-  let closingRow = table.rows[table.rows.length-1];
-  closingRow.cells[6].innerText = newBalance;
-}
-
-// Financial Abstract calculation
-function updateAbstract() {
-  let view = document.getElementById("abstractView").value;
-  let table = document.getElementById("dayBook").getElementsByTagName('tbody')[0];
-  let totalCredit=0, totalDebit=0;
-
-  for(let i=1; i<table.rows.length-1; i++){
-    let row = table.rows[i];
-    totalCredit += parseFloat(row.cells[4].innerText);
-    totalDebit += parseFloat(row.cells[5].innerText);
-  }
-
-  document.getElementById("abstractResult").innerHTML = `
-    Total Credit: ₹${totalCredit} <br>
-    Total Debit: ₹${totalDebit} <br>
-    Balance: ₹${totalCredit-totalDebit+parseFloat(table.rows[0].cells[6].innerText)}
-  `;
-}
-</script>
 </body>
 </html>
