@@ -1,7 +1,7 @@
-/* ================================================== */
-/* Apple Residency Accounts Dashboard - FY 24-25    */
-/* Complete styling for Banner, Nav, Tables, Forms */
-/* ================================================== */
+/* ================================================ */
+/* Apple Residency Accounts Dashboard - FY 24-25  */
+/* Fully fixed layout, stable for banner, nav, table, entry form, abstract */
+/* ================================================ */
 
 /* ===================== GENERAL ===================== */
 body {
@@ -13,21 +13,22 @@ body {
 }
 
 /* ===================== BANNER ===================== */
-.banner img { 
-  width: 100%; 
-  max-height: 150px; 
-  object-fit: cover; 
+.banner img {
+  width: 100%;
+  max-height: 200px;      /* increase height to show full image */
+  height: auto;
+  object-fit: contain;     /* show full image without cutting */
   display: block;
 }
 
 /* ===================== NAVIGATION ===================== */
-.nav { 
-  background-color: #87CEEB; 
-  padding: 10px 20px; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.nav {
+  background-color: #87CEEB;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* prevents collapse on smaller screens */
 }
 
 .nav a.nav-btn {
@@ -40,22 +41,22 @@ body {
   transition: background-color 0.3s;
 }
 
-.nav a.nav-btn:hover { 
-  background-color: #d0e7f9; 
+.nav a.nav-btn:hover {
+  background-color: #d0e7f9;
 }
 
 .nav button {
-  background-color: #ff4d4d; 
-  color: white; 
-  border: none; 
-  padding: 6px 12px; 
-  border-radius: 4px; 
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.nav button:hover { 
-  background-color: #e60000; 
+.nav button:hover {
+  background-color: #e60000;
 }
 
 /* ===================== HEADINGS ===================== */
@@ -66,27 +67,30 @@ h2, h3 {
 }
 
 /* ===================== ENTRY FORM ===================== */
-.entry-form { 
-  margin: 20px auto; 
-  padding: 20px; 
-  background: #f5f5f5; 
-  border-radius: 8px; 
+.entry-form {
+  margin: 20px auto;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
   max-width: 950px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
 .entry-form label {
   font-weight: bold;
   margin-right: 10px;
+  display: inline-block;
+  min-width: 120px;
 }
 
-.entry-form input, 
+.entry-form input,
 .entry-form select {
   padding: 6px;
   margin: 5px 10px 10px 0;
   width: 200px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 /* ===================== TABLES ===================== */
@@ -95,13 +99,14 @@ table {
   margin: 20px auto;
   border-collapse: collapse;
   background: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  table-layout: fixed;
 }
 
 th, td {
   border: 1px solid #ccc;
   padding: 10px;
   text-align: center;
+  word-wrap: break-word;
 }
 
 th {
@@ -109,7 +114,7 @@ th {
   color: #000;
 }
 
-/* Highlight opening/closing balance rows */
+/* Highlight Opening & Closing balance */
 #dayBook tbody tr:first-child td,
 #dayBook tbody tr:last-child td {
   font-weight: bold;
@@ -135,12 +140,12 @@ button:hover {
 
 /* ===================== FINANCIAL ABSTRACT ===================== */
 .fin-abstract {
+  max-width: 950px;
   margin: 20px auto;
   padding: 15px;
   background: #eef;
   border-radius: 8px;
-  max-width: 950px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
 .fin-abstract label {
@@ -155,9 +160,10 @@ button:hover {
 }
 
 /* ===================== RESPONSIVE DESIGN ===================== */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .entry-form input, .entry-form select {
     width: 100%;
+    margin-bottom: 10px;
   }
 
   .nav {
@@ -170,7 +176,21 @@ button:hover {
   }
 
   table {
-    width: 100%;
     font-size: 14px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  h2, h3 {
+    font-size: 18px;
+  }
+
+  th, td {
+    padding: 6px;
+  }
+
+  .entry-form label {
+    min-width: 100px;
   }
 }
