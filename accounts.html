@@ -27,7 +27,7 @@
 <h2>📊 Accounts Dashboard - FY 24-25</h2>
 
 <!-- Entry Form -->
-<div class="entry-form">
+<form id="entryForm" class="entry-form">
   <h3>Add Entry</h3>
   <label>Date:</label>
   <input type="text" id="entryDate" placeholder="dd/mm/yyyy">
@@ -37,29 +37,38 @@
   <input type="text" id="entryDesc" placeholder="Description">
   <label>Category:</label>
   <select id="entryCategory">
-    <option>MC Subscription</option>
-    <option>Corpus Fund</option>
-    <option>AMC Fund</option>
-    <option>Donations</option>
-    <option>Maintenance</option>
-    <option>Salary & Wages</option>
-    <option>Electricity Bill</option>
-    <option>Repairs</option>
-    <option>Stock/Assets</option>
-    <option>Gift & Donations</option>
-    <option>Sundry Expense</option>
-    <option>Stationary</option>
-    <option>Fees & Taxes</option>
+    <option value="MC Subscription">MC Subscription</option>
+    <option value="Corpus Fund">Corpus Fund</option>
+    <option value="AMC Fund">AMC Fund</option>
+    <option value="Donations">Donations</option>
+    <option value="Maintenance">Maintenance</option>
+    <option value="Salary & Wages">Salary & Wages</option>
+    <option value="Electricity Bill">Electricity Bill</option>
+    <option value="Repairs">Repairs</option>
+    <option value="Stock/Assets">Stock/Assets</option>
+    <option value="Gift & Donations">Gift & Donations</option>
+    <option value="Sundry Expense">Sundry Expense</option>
+    <option value="Stationary">Stationary</option>
+    <option value="Fees & Taxes">Fees & Taxes</option>
+  </select>
+  <label>Payment Mode:</label>
+  <select id="entryPaymentMode">
+    <option value="Cash">Cash</option>
+    <option value="Bank">Bank</option>
+    <option value="G-Pay">G-Pay</option>
+    <option value="NEFT">NEFT</option>
+    <option value="Other">Other</option>
   </select>
   <label>Credit (₹):</label>
   <input type="number" id="entryCredit" value="0">
   <label>Debit (₹):</label>
   <input type="number" id="entryDebit" value="0">
-  <button onclick="addEntry()">Submit</button>
-</div>
+  <button type="submit">submit</button>
+</form>
 
 <!-- Day Book Table -->
-<h3>📒 Day Book</h3>
+<h3>📒 Day Book</h3>Treasurer2024
+
 <table id="dayBook">
   <thead>
     <tr>
