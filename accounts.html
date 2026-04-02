@@ -1,360 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Apple Residency Accounts Dashboard FY 24-25</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f6f8; }
-    .nav { background-color: #2c3e50; padding: 10px 20px; color: white; font-weight: bold; }
-    .nav span { margin-right: 20px; cursor: pointer; }
-    h1,h2,h3 { color: #34495e; }
-    .summary-cards { display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
-    .card { background-color: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); flex: 1; min-width: 180px; text-align: center; }
-    .card strong { display: block; margin-bottom: 5px; color: #555; }
-    .card span { font-size: 1.2em; color: #2c3e50; }
-    table { width: 100%; border-collapse: collapse; background-color: white; margin-bottom: 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-    table th, table td { border: 1px solid #ddd; padding: 8px 10px; text-align: center; }
-    table th { background-color: #2980b9; color: white; }
-    table tr:nth-child(even){ background-color: #f9f9f9; }
-    table tr:hover { background-color: #f1f1f1; }
-    form { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); max-width: 600px; margin-bottom: 40px; }
-    form label { display: block; margin: 8px 0 4px; font-weight: bold; }
-    form input, form select, form textarea { width: 100%; padding: 6px 8px; margin-bottom: 12px; border-radius: 4px; border: 1px solid #ccc; }
-    form input[type="submit"] { width: auto; background-color: #27ae60; color: white; font-weight: bold; cursor: pointer; border: none; padding: 10px 20px; }
-    form input[type="submit"]:hover { background-color: #219150; }
-    .filter-section { margin-bottom: 20px; }
-    .filter-section label { margin-right: 10px; font-weight: bold; }
-    .filter-section select { padding: 5px 8px; border-radius: 4px; border: 1px solid #ccc; }
-  </style>
+<meta charset="UTF-8">
+<title>Apple Residency Accounts Dashboard FY 24-25</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; background-color:#f4f6f8; user-select:none; }
+/* Header / Nav */
+.banner { width:100%; height:150px; background-color:#87CEEB; text-align:center; }
+.banner img { max-height:100%; }
+.nav { background-color:#87CEEB; padding:10px 20px; color:#000; font-weight:bold; display:flex; justify-content:flex-start; align-items:center; gap:20px; }
+.nav button { margin-left:auto; background-color:#ff4d4d; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; }
+.nav button:hover{ background-color:#e60000; }
+h1,h2,h3 { color:#34495e; margin-top:20px; }
+.summary-cards { display:flex; gap:20px; margin-bottom:20px; flex-wrap:wrap; }
+.card { background:white; padding:15px 20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1; min-width:180px; text-align:center; }
+.card strong { display:block; margin-bottom:5px; color:#555; }
+.card span { font-size:1.2em; color:#2c3e50; }
+table { width:100%; border-collapse:collapse; background:white; margin-bottom:30px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+table th, table td { border:1px solid #ddd; padding:8px 10px; text-align:center; }
+table th { background-color:#2980b9; color:white; }
+table tr:nth-child(even){ background-color:#f9f9f9; }
+table tr:hover { background-color:#f1f1f1; }
+form { background:white; padding:20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); max-width:600px; margin-bottom:40px; }
+form label { display:block; margin:8px 0 4px; font-weight:bold; }
+form input, form select, form textarea { width:100%; padding:6px 8px; margin-bottom:12px; border-radius:4px; border:1px solid #ccc; }
+form input[type="submit"] { width:auto; background-color:#27ae60; color:white; font-weight:bold; cursor:pointer; border:none; padding:10px 20px; }
+form input[type="submit"]:hover { background-color:#219150; }
+.filter-section { margin-bottom:20px; background:white; padding:15px 20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+.filter-section label { margin-right:10px; font-weight:bold; }
+.filter-section select { padding:5px 8px; border-radius:4px; border:1px solid #ccc; }
+</style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <div class="nav">
-    <span>Home</span>
-    <span>About</span>
-    <span>Committee</span>
-    <span>Notices</span>
-    <span>Login</span>
-    <span>Accounts</span>
-  </div>
+<!-- Banner -->
+<div class="banner">
+  <img src="banner1.png" alt="Apple Residency Banner">
+</div>
 
-  <h1>📊 Accounts Dashboard FY 24-25</h1>
-  <h2>Apple Residency Welfare Association</h2>
+<!-- Nav -->
+<div class="nav">
+  <span>Home</span>
+  <span>About</span>
+  <span>Committee</span>
+  <span>Notices</span>
+  <span>Login</span>
+  <button onclick="logout()">Logout</button>
+</div>
 
-  <!-- Summary Cards -->
-  <div class="summary-cards">
-    <div class="card"><strong>Total Credit (₹)</strong><span id="totalCredit">0</span></div>
-    <div class="card"><strong>Total Debit (₹)</strong><span id="totalDebit">0</span></div>
-    <div class="card"><strong>Balance (₹)</strong><span id="balance">0</span></div>
-    <div class="card"><strong>Bank Credit (₹)</strong><span id="bankCredit">0</span></div>
-    <div class="card"><strong>Bank Debit (₹)</strong><span id="bankDebit">0</span></div>
-    <div class="card"><strong>Bank Balance (₹)</strong><span id="bankBalance">0</span></div>
-  </div>
+<h1>📊 Accounts Dashboard FY 24-25</h1>
+<h2>Apple Residency Welfare Association</h2>
 
-  <!-- Accounts Table -->
-  <h3>Accounts Table</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Category</th>
-        <th>Credit (₹)</th>
-        <th>Debit (₹)</th>
-        <th>Balance (₹)</th>
-        <th>Bank Cr (₹)</th>
-        <th>Bank Dr (₹)</th>
-        <th>Bank Balance (₹)</th>
-      </tr>
-    </thead>
-    <tbody id="accountsTableBody"></tbody>
-  </table>
+<!-- Summary Cards -->
+<div class="summary-cards">
+  <div class="card"><strong>Total Credit (₹)</strong><span id="totalCredit">0</span></div>
+  <div class="card"><strong>Total Debit (₹)</strong><span id="totalDebit">0</span></div>
+  <div class="card"><strong>Balance (₹)</strong><span id="balance">0</span></div>
+  <div class="card"><strong>Bank Credit (₹)</strong><span id="bankCredit">0</span></div>
+  <div class="card"><strong>Bank Debit (₹)</strong><span id="bankDebit">0</span></div>
+  <div class="card"><strong>Bank Balance (₹)</strong><span id="bankBalance">0</span></div>
+</div>
 
-  <!-- Add Entry Form -->
-  <h3>Add Entry</h3>
-  <form id="addEntryForm">
-    <label>Date:</label><input type="date" id="date" required>
-    <label>Name:</label><input type="text" id="name" required>
-    <label>Description:</label><textarea id="description" rows="2" required></textarea>
-    <label>Category:</label>
-    <select id="category" required>
-      <option value="Maintenance">Maintenance</option>
-      <option value="Cleaning">Cleaning</option>
-      <option value="Electricity">Electricity</option>
-      <option value="Salaries">Salaries</option>
-      <option value="Repairs">Repairs</option>
-      <option value="Miscellaneous">Miscellaneous</option>
-    </select>
-    <label>Transaction Type:</label>
-    <select id="transactionType" required>
-      <option value="credit">Credit</option>
-      <option value="debit">Debit</option>
-    </select>
-    <label>Payment Mode:</label>
-    <select id="paymentMode">
-      <option value="bank">Bank Transfer / G-Pay / NEFT</option>
-      <option value="cash">Cash</option>
-    </select>
-    <label>Credit (₹):</label><input type="number" id="credit" value="0" min="0">
-    <label>Debit (₹):</label><input type="number" id="debit" value="0" min="0">
-    <input type="submit" value="Add Entry">
-  </form>
+<!-- Financial Abstract Filter -->
+<div class="filter-section">
+  <label>View Period:</label>
+  <select id="periodFilter">
+    <option value="month">Monthly</option>
+    <option value="quarter">Quarterly</option>
+    <option value="halfyear">Half-Yearly</option>
+    <option value="year">Yearly</option>
+  </select>
+</div>
 
-  <!-- Financial Abstract -->
-  <h3>Financial Abstract</h3>
-  <div class="filter-section">
-    <label>Select Period:</label>
-    <select id="periodFilter">
-      <option value="month">Monthly</option>
-      <option value="quarter">Quarterly</option>
-      <option value="halfyear">Half-Yearly</option>
-      <option value="year">Yearly</option>
-    </select>
-  </div>
-  <table>
-    <thead>
-      <tr>
-        <th>Date Range</th>
-        <th>Total Credit</th>
-        <th>Total Debit</th>
-        <th>Net Balance</th>
-        <th>Bank Cr</th>
-        <th>Bank Dr</th>
-        <th>Bank Balance</th>
-      </tr>
-    </thead>
-    <tbody id="abstractBody"></tbody>
-  </table>
+<!-- Accounts Table -->
+<h3>Day Book</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Credit (₹)</th>
+      <th>Debit (₹)</th>
+      <th>Balance (₹)</th>
+      <th>Bank Cr (₹)</th>
+      <th>Bank Dr (₹)</th>
+      <th>Bank Balance (₹)</th>
+    </tr>
+  </thead>
+  <tbody id="accountsTableBody"></tbody>
+</table>
 
-  <!-- Category-wise Abstract -->
-  <h3>Category-wise Abstract</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Category</th>
-        <th>Credit (₹)</th>
-        <th>Debit (₹)</th>
-        <th>Net Balance (₹)</th>
-        <th>Bank Cr (₹)</th>
-        <th>Bank Dr (₹)</th>
-        <th>Bank Balance (₹)</th>
-      </tr>
-    </thead>
-    <tbody id="categoryBody"></tbody>
-  </table>
+<!-- Add Entry Form -->
+<h3>Add Entry</h3>
+<form id="addEntryForm">
+  <label>Date (dd/mm/yyyy):</label><input type="text" id="date" placeholder="dd/mm/yyyy" required pattern="\\d{2}/\\d{2}/\\d{4}">
+  <label>Name:</label><input type="text" id="name" required>
+  <label>Description:</label><textarea id="description" rows="2" required></textarea>
+  <label>Category:</label>
+  <select id="category" required>
+    <option>MC Subscription</option>
+    <option>Corpus Fund</option>
+    <option>AMC Fund</option>
+    <option>Donations</option>
+    <option>Maintenance</option>
+    <option>Salary & Wages</option>
+    <option>Electricity Bill</option>
+    <option>Repairs</option>
+    <option>Stock / Assets</option>
+    <option>Gift & Donations</option>
+    <option>Sundry Expense</option>
+  </select>
+  <label>Transaction Type:</label>
+  <select id="transactionType" required>
+    <option value="credit">Credit</option>
+    <option value="debit">Debit</option>
+  </select>
+  <label>Payment Mode:</label>
+  <select id="paymentMode">
+    <option value="bank">Bank Transfer / G-Pay / NEFT</option>
+    <option value="cash">Cash</option>
+  </select>
+  <label>Credit (₹):</label><input type="number" id="credit" value="0" min="0">
+  <label>Debit (₹):</label><input type="number" id="debit" value="0" min="0">
+  <input type="submit" value="Add Entry">
+</form>
 
-  <!-- Trial Balance -->
-  <h3>Trial Balance</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Account / Category</th>
-        <th>Debit (₹)</th>
-        <th>Credit (₹)</th>
-        <th>Net Balance (₹)</th>
-      </tr>
-    </thead>
-    <tbody id="trialBody"></tbody>
-  </table>
+<script>
+const password = "Treasurer2024";
+let authenticated = false;
+while(!authenticated){
+  const pass = prompt("Enter Treasurer Password to Access Accounts:");
+  if(pass===password){ authenticated=true; break; }
+  alert("Incorrect Password! Access Denied.");
+}
 
-  <script>
-    const form = document.getElementById('addEntryForm');
-    const tableBody = document.getElementById('accountsTableBody');
-    const abstractBody = document.getElementById('abstractBody');
-    const trialBody = document.getElementById('trialBody');
-    const categoryBody = document.getElementById('categoryBody');
-    const periodFilter = document.getElementById('periodFilter');
+document.addEventListener('contextmenu', e=>e.preventDefault());
+document.addEventListener('selectstart', e=>e.preventDefault());
 
-    // --- Preloaded sample entries ---
-    let entries = [
-      {date:'01-09-2024', name:'Opening Balance', description:'Opening Cash', category:'Maintenance', transactionType:'credit', paymentMode:'bank', credit:43325, debit:0},
-      {date:'2024-09-05', name:'Maintenance Collection', description:'Monthly maintenance', category:'Maintenance', transactionType:'credit', paymentMode:'bank', credit:39000, debit:0},
-      {date:'2024-09-10', name:'Cleaning Staff', description:'Salary for cleaning', category:'Cleaning', transactionType:'debit', paymentMode:'bank', credit:0, debit:600},
-      {date:'2024-09-15', name:'Electricity Bill', description:'Monthly electricity', category:'Electricity', transactionType:'debit', paymentMode:'bank', credit:0, debit:2000},
-      {date:'2024-09-18', name:'Repair Charges', description:'Plumbing repair', category:'Repairs', transactionType:'debit', paymentMode:'bank', credit:0, debit:1200}
-    ];
+function logout(){ window.location.href = "index.html"; }
 
-    let totalCredit = 0, totalDebit = 0, balance = 0;
-    let bankCredit = 0, bankDebit = 0, bankBalance = 0;
+const tableBody = document.getElementById('accountsTableBody');
+const form = document.getElementById('addEntryForm');
+const periodFilter = document.getElementById('periodFilter');
 
-    entries.forEach(entry=>{
-      totalCredit += entry.credit;
-      totalDebit += entry.debit;
-      balance += entry.credit - entry.debit;
-      if(entry.paymentMode==='bank'){
-        bankCredit += entry.credit;
-        bankDebit += entry.debit;
-        bankBalance += entry.credit - entry.debit;
-      }
-    });
+// Load previous balances
+const prevBalances = JSON.parse(localStorage.getItem('prevBalances') || '{"cash":0,"bank":0}');
 
-    function renderSummary() {
-      document.getElementById('totalCredit').textContent = totalCredit;
-      document.getElementById('totalDebit').textContent = totalDebit;
-      document.getElementById('balance').textContent = balance;
-      document.getElementById('bankCredit').textContent = bankCredit;
-      document.getElementById('bankDebit').textContent = bankDebit;
-      document.getElementById('bankBalance').textContent = bankBalance;
-    }
+// --- Sample Entries ---
+let entries = [
+  // Opening balances
+  {date:'01/04/2024', name:'Opening Balance - B/D', description:'Auto-filled', category:'Opening Balance', transactionType:'credit', paymentMode:'bank', credit:prevBalances.bank, debit:0},
+  {date:'01/04/2024', name:'Opening Balance - B/D', description:'Auto-filled', category:'Opening Balance', transactionType:'credit', paymentMode:'cash', credit:prevBalances.cash, debit:0},
+  // Sample MC Subscription
+  {date:'05/04/2024', name:'John Doe', description:'April maintenance', category:'MC Subscription', transactionType:'credit', paymentMode:'bank', credit:1500, debit:0},
+  {date:'07/04/2024', name:'Jane Smith', description:'April maintenance', category:'MC Subscription', transactionType:'credit', paymentMode:'cash', credit:1500, debit:0},
+  // Corpus Fund
+  {date:'10/04/2024', name:'Mr. Kumar', description:'Corpus Fund Contribution', category:'Corpus Fund', transactionType:'credit', paymentMode:'bank', credit:5000, debit:0},
+  // AMC Fund
+  {date:'12/04/2024', name:'AMC Corp', description:'AMC Fund Payment', category:'AMC Fund', transactionType:'credit', paymentMode:'bank', credit:2000, debit:0},
+  // Donations
+  {date:'15/04/2024', name:'Mrs. Patel', description:'Charity Donation', category:'Donations', transactionType:'credit', paymentMode:'cash', credit:1000, debit:0},
+  // Maintenance Expense
+  {date:'18/04/2024', name:'Service Provider', description:'Plumbing Maintenance', category:'Maintenance', transactionType:'debit', paymentMode:'bank', credit:0, debit:1200},
+  // Salary & Wages
+  {date:'20/04/2024', name:'Cleaner', description:'April Salary', category:'Salary & Wages', transactionType:'debit', paymentMode:'bank', credit:0, debit:2500},
+  // Electricity Bill
+  {date:'22/04/2024', name:'Electricity Board', description:'Monthly Bill', category:'Electricity Bill', transactionType:'debit', paymentMode:'bank', credit:0, debit:3000},
+  // Repairs
+  {date:'25/04/2024', name:'Repair Co', description:'Roof Repair', category:'Repairs', transactionType:'debit', paymentMode:'bank', credit:0, debit:1800},
+  // Stock / Assets
+  {date:'27/04/2024', name:'Stationery Shop', description:'Office Stationery', category:'Stock / Assets', transactionType:'debit', paymentMode:'cash', credit:0, debit:600},
+  // Gift & Donations
+  {date:'28/04/2024', name:'Community Event', description:'Gifts', category:'Gift & Donations', transactionType:'debit', paymentMode:'cash', credit:0, debit:1200},
+  // Sundry Expense
+  {date:'30/04/2024', name:'Miscellaneous', description:'Misc Expense', category:'Sundry Expense', transactionType:'debit', paymentMode:'cash', credit:0, debit:500}
+];
 
-    function renderAccountsTable() {
-      tableBody.innerHTML = '';
-      let runningBalance = 0;
-      let runningBankBalance = 0;
-      entries.forEach(entry => {
-        runningBalance += entry.credit - entry.debit;
-        runningBankBalance += (entry.paymentMode==='bank'?entry.credit-entry.debit:0);
-        tableBody.insertAdjacentHTML('beforeend', `
-          <tr>
-            <td>${entry.date}</td>
-            <td>${entry.name}</td>
-            <td>${entry.description}</td>
-            <td>${entry.category}</td>
-            <td>${entry.credit}</td>
-            <td>${entry.debit}</td>
-            <td>${runningBalance}</td>
-            <td>${entry.paymentMode==='bank'?entry.credit:0}</td>
-            <td>${entry.paymentMode==='bank'?entry.debit:0}</td>
-            <td>${runningBankBalance}</td>
-          </tr>
-        `);
-      });
-    }
+function calculateTotals(filteredEntries){
+  let totalCredit=0, totalDebit=0, balance=0, bankCredit=0, bankDebit=0, bankBalance=0;
+  let runningBalance=0, runningBank=0, runningCash=0;
+  tableBody.innerHTML='';
+  (filteredEntries||entries).forEach(e=>{
+    runningBalance += e.credit - e.debit;
+    if(e.paymentMode==='bank'){ runningBank += e.credit - e.debit; }
+    else { runningCash += e.credit - e.debit; }
+    totalCredit += e.credit; totalDebit += e.debit;
+    if(e.paymentMode==='bank'){ bankCredit += e.credit; bankDebit += e.debit; bankBalance=runningBank; }
+    tableBody.insertAdjacentHTML('beforeend', `<tr>
+      <td>${e.date}</td><td>${e.name}</td><td>${e.description}</td><td>${e.category}</td>
+      <td>${e.credit}</td><td>${e.debit}</td><td>${runningBalance}</td>
+      <td>${e.paymentMode==='bank'?e.credit:0}</td><td>${e.paymentMode==='bank'?e.debit:0}</td><td>${runningBank}</td>
+    </tr>`);
+  });
+  const lastEntry = (filteredEntries||entries)[(filteredEntries||entries).length-1];
+  tableBody.insertAdjacentHTML('beforeend', `<tr>
+    <td>${lastEntry.date}</td><td>Closing Balance - C/O</td><td>Auto-calculated closing balance</td><td></td>
+    <td>${totalCredit}</td><td>${totalDebit}</td><td>${runningBalance}</td>
+    <td>${bankCredit}</td><td>${bankDebit}</td><td>${runningBank}</td>
+  </tr>`);
 
-    function getFilteredEntries(period) {
-      const now = new Date();
-      let startDate, endDate;
-      if(period==='month'){
-        startDate = new Date(now.getFullYear(), now.getMonth(),1);
-        endDate = new Date(now.getFullYear(), now.getMonth()+1,0);
-      } else if(period==='quarter'){
-        const quarter = Math.floor(now.getMonth()/3);
-        startDate = new Date(now.getFullYear(), quarter*3,1);
-        endDate = new Date(now.getFullYear(), quarter*3+3,0);
-      } else if(period==='halfyear'){
-        const half = now.getMonth()<6?0:6;
-        startDate = new Date(now.getFullYear(), half,1);
-        endDate = new Date(now.getFullYear(), half+6,0);
-      } else if(period==='year'){
-        startDate = new Date(now.getFullYear(),0,1);
-        endDate = new Date(now.getFullYear(),11,31);
-      }
-      return entries.filter(e=>new Date(e.date)>=startDate && new Date(e.date)<=endDate);
-    }
+  document.getElementById('totalCredit').innerText = totalCredit;
+  document.getElementById('totalDebit').innerText = totalDebit;
+  document.getElementById('balance').innerText = runningBalance;
+  document.getElementById('bankCredit').innerText = bankCredit;
+  document.getElementById('bankDebit').innerText = bankDebit;
+  document.getElementById('bankBalance').innerText = runningBank;
 
-    function renderAbstract() {
-      const period = periodFilter.value;
-      const filtered = getFilteredEntries(period);
-      let tCredit = filtered.reduce((a,b)=>a+b.credit,0);
-      let tDebit = filtered.reduce((a,b)=>a+b.debit,0);
-      let bCr = filtered.filter(e=>e.paymentMode==='bank').reduce((a,b)=>a+b.credit,0);
-      let bDr = filtered.filter(e=>e.paymentMode==='bank').reduce((a,b)=>a+b.debit,0);
-      let start = filtered.length>0 ? filtered[0].date : '-';
-      let end = filtered.length>0 ? filtered[filtered.length-1].date : '-';
-      abstractBody.innerHTML = `<tr>
-        <td>${start} to ${end}</td>
-        <td>${tCredit}</td>
-        <td>${tDebit}</td>
-        <td>${tCredit - tDebit}</td>
-        <td>${bCr}</td>
-        <td>${bDr}</td>
-        <td>${bCr - bDr}</td>
-      </tr>`;
-      renderCategoryAbstract(filtered);
-    }
+  if(!filteredEntries) localStorage.setItem('prevBalances', JSON.stringify({cash:runningCash, bank:runningBank}));
+}
 
-    function renderCategoryAbstract(filteredEntries) {
-      const categories = {};
-      filteredEntries.forEach(e=>{
-        if(!categories[e.category]) categories[e.category]={debit:0, credit:0, bankCr:0, bankDr:0};
-        categories[e.category].debit += e.debit;
-        categories[e.category].credit += e.credit;
-        if(e.paymentMode==='bank'){
-          categories[e.category].bankCr += e.credit;
-          categories[e.category].bankDr += e.debit;
-        }
-      });
-      categoryBody.innerHTML='';
-      for(const cat in categories){
-        const c = categories[cat];
-        categoryBody.insertAdjacentHTML('beforeend', `<tr>
-          <td>${cat}</td>
-          <td>${c.credit}</td>
-          <td>${c.debit}</td>
-          <td>${c.credit-c.debit}</td>
-          <td>${c.bankCr}</td>
-          <td>${c.bankDr}</td>
-          <td>${c.bankCr-c.bankDr}</td>
-        </tr>`);
-      }
-    }
+calculateTotals();
 
-    function renderTrialBalance() {
-      const categories = {};
-      entries.forEach(e=>{
-        if(!categories[e.category]) categories[e.category]={debit:0, credit:0};
-        categories[e.category].debit += e.debit;
-        categories[e.category].credit += e.credit;
-      });
-      trialBody.innerHTML = '';
-      let totalD = 0, totalC = 0;
-      for(const cat in categories){
-        const d = categories[cat].debit;
-        const c = categories[cat].credit;
-        totalD += d;
-        totalC += c;
-        trialBody.insertAdjacentHTML('beforeend', `<tr>
-          <td>${cat}</td>
-          <td>${d}</td>
-          <td>${c}</td>
-          <td>${c - d}</td>
-        </tr>`);
-      }
-      trialBody.insertAdjacentHTML('beforeend', `<tr>
-        <td><strong>Totals</strong></td>
-        <td><strong>${totalD}</strong></td>
-        <td><strong>${totalC}</strong></td>
-        <td><strong>${totalC - totalD}</strong></td>
-      </tr>`);
-    }
+form.addEventListener('submit', e=>{
+  e.preventDefault();
+  let entry = {
+    date: document.getElementById('date').value,
+    name: document.getElementById('name').value,
+    description: document.getElementById('description').value,
+    category: document.getElementById('category').value,
+    transactionType: document.getElementById('transactionType').value,
+    paymentMode: document.getElementById('paymentMode').value,
+    credit: parseFloat(document.getElementById('credit').value)||0,
+    debit: parseFloat(document.getElementById('debit').value)||0
+  };
+  if(entry.transactionType==='credit'){ entry.debit=0; } else { entry.credit=0; }
+  entries.push(entry);
+  calculateTotals();
+  form.reset();
+});
 
-    renderSummary();
-    renderAccountsTable();
-    renderAbstract();
-    renderTrialBalance();
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const entry = {
-        date: document.getElementById('date').value,
-        name: document.getElementById('name').value,
-        description: document.getElementById('description').value,
-        category: document.getElementById('category').value,
-        transactionType: document.getElementById('transactionType').value,
-        paymentMode: document.getElementById('paymentMode').value,
-        credit: parseFloat(document.getElementById('credit').value)||0,
-        debit: parseFloat(document.getElementById('debit').value)||0
-      };
-      if(entry.transactionType==='credit'){ entry.debit=0; } else { entry.credit=0; }
-      totalCredit += entry.credit;
-      totalDebit += entry.debit;
-      balance += entry.credit - entry.debit;
-      if(entry.paymentMode==='bank'){
-        bankCredit += entry.credit;
-        bankDebit += entry.debit;
-        bankBalance += entry.credit - entry.debit;
-      }
-      entries.push(entry);
-      renderSummary();
-      renderAccountsTable();
-      renderAbstract();
-      renderTrialBalance();
-      form.reset();
-    });
-
-    periodFilter.addEventListener('change', renderAbstract);
-  </script>
+periodFilter.addEventListener('change', ()=>{
+  const period = periodFilter.value;
+  const now = new Date();
+  const filtered = entries.filter(e=>{
+    const parts = e.date.split('/'); 
+    const d = new Date(parts[2], parts[1]-1, parts[0]);
+    if(period==='month') return d.getMonth()===now.getMonth() && d.getFullYear()===now.getFullYear();
+    if(period==='quarter'){ const q = Math.floor(d.getMonth()/3); return q===Math.floor(now.getMonth()/3) && d.getFullYear()===now.getFullYear(); }
+    if(period==='halfyear'){ const h = d.getMonth()<6?1:2; const nowH = now.getMonth()<6?1:2; return h===nowH && d.getFullYear()===now.getFullYear(); }
+    if(period==='year') return d.getFullYear()===now.getFullYear();
+    return true;
+  });
+  calculateTotals(filtered);
+});
+</script>
 </body>
 </html>
