@@ -1,374 +1,176 @@
+/* ================================================== */
+/* Apple Residency Accounts Dashboard - FY 24-25    */
+/* Complete styling for Banner, Nav, Tables, Forms */
+/* ================================================== */
+
+/* ===================== GENERAL ===================== */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-/* HEADER */
-.top-bar {
-    text-align: center;
+/* ===================== BANNER ===================== */
+.banner img { 
+  width: 100%; 
+  max-height: 150px; 
+  object-fit: cover; 
+  display: block;
 }
 
-.banner {
-    width: 100%;
-    height: auto;
+/* ===================== NAVIGATION ===================== */
+.nav { 
+  background-color: #87CEEB; 
+  padding: 10px 20px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* MENU */
-.menu {
-    background: #2c3e50;
-    text-align: center;
-    padding: 10px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.nav a.nav-btn {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  padding: 6px 12px;
+  margin-right: 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
-.menu a {
-    color: white;
-    margin: 15px;
-    text-decoration: none;
-    font-weight: bold;
+.nav a.nav-btn:hover { 
+  background-color: #d0e7f9; 
 }
 
-.menu a:hover {
-    color: #f1c40f;
-}
-/* =================== HERO SECTION / MIDDLE =================== */
-.middle {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 35px;           /* slightly reduced gap for balance */
-    padding: 35px 20px;
+.nav button {
+  background-color: #ff4d4d; 
+  color: white; 
+  border: none; 
+  padding: 6px 12px; 
+  border-radius: 4px; 
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* LEFT: WELCOME + CARDS */
-.middle .welcome {
-    flex: 1 1 55%;        /* slightly narrower to give space for image */
-    min-width: 300px;
+.nav button:hover { 
+  background-color: #e60000; 
 }
 
-/* CARDS */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: flex-start;
+/* ===================== HEADINGS ===================== */
+h2, h3 {
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
 }
 
-.card {
-    flex: 1 1 calc(25% - 20px);
-    max-width: 220px;     /* slightly smaller width */
-    min-height: 180px;
-    background: #3498db;
-    color: white;
-    text-align: center;
-    border-radius: 12px;
-    padding: 25px 15px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    animation: slideUp 0.6s ease;
+/* ===================== ENTRY FORM ===================== */
+.entry-form { 
+  margin: 20px auto; 
+  padding: 20px; 
+  background: #f5f5f5; 
+  border-radius: 8px; 
+  max-width: 950px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.card:nth-child(1) { background: #3498db; }
-.card:nth-child(2) { background: #2ecc71; }
-.card:nth-child(3) { background: #e67e22; }
-.card:nth-child(4) { background: #e74c3c; }
-
-.card i {
-    font-size: 40px;
-    margin-bottom: 12px;
+.entry-form label {
+  font-weight: bold;
+  margin-right: 10px;
 }
 
-.card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+.entry-form input, 
+.entry-form select {
+  padding: 6px;
+  margin: 5px 10px 10px 0;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-/* RIGHT: BUILDING IMAGE */
-.middle .image {
-    flex: 1 1 40%;          /* slightly wider than before for balance */
-    min-width: 250px;
-    text-align: center;
-    align-self: center;
+/* ===================== TABLES ===================== */
+table {
+  width: 95%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.middle .image img {
-    width: 60%;             /* reduced from 75% */
-    max-width: 300px;       /* reduced from 380px */
-    height: auto;
-    border-radius: 10px;
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
 }
 
-/* SLIDE-UP ANIMATION */
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+th {
+  background-color: #87CEEB;
+  color: #000;
 }
 
-/* RESPONSIVE: Tablets */
-@media (max-width: 992px) {
-    .card {
-        flex: 1 1 calc(50% - 20px);
-        min-height: 170px;
-    }
-    .middle {
-        gap: 25px;
-        padding: 25px 15px;
-    }
-    .middle .image {
-        margin-top: 20px;
-    }
+/* Highlight opening/closing balance rows */
+#dayBook tbody tr:first-child td,
+#dayBook tbody tr:last-child td {
+  font-weight: bold;
+  background-color: #e0f7ff;
 }
 
-/* RESPONSIVE: Mobile */
-@media (max-width: 600px) {
-    .middle {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        padding: 15px 10px;
-    }
-    .cards {
-        justify-content: center;
-    }
-    .card {
-        flex: 1 1 90%;
-        max-width: 90%;
-        min-height: 160px;
-        margin-bottom: 15px;
-    }
-    .middle .image {
-        margin-top: 20px;
-    }
-}
-/* Responsive: stack cards on smaller screens */
-@media (max-width: 992px) {
-    .card {
-        flex: 1 1 calc(50% - 20px); /* 2 cards per row */
-    }
-}
-@media (max-width: 600px) {
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-    .card {
-        flex: 1 1 90%;
-        max-width: 90%;
-        margin-bottom: 15px;
-    }
-}
-
-/* Individual Colors */
-.card:nth-child(1) {
-    background: #3498db; /* Blue - About */
-}
-
-.card:nth-child(2) {
-    background: #2ecc71; /* Green - Committee */
-}
-
-.card:nth-child(3) {
-    background: #e67e22; /* Orange - Notices */
-}
-
-.card:nth-child(4) {
-    background: #e74c3c; /* Red - Login */
-}
-
-/* Hover Effect */
-.card:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-}
-/* FOOTER */
-.bottom {
-    display: flex;
-    justify-content: space-around;
-    background: #2c3e50;
-    color: white;
-    padding: 20px;
-}
-
-footer p {
-    text-align: center;
-}
-/* PAGE FADE IN */
-body {
-    animation: fadeIn 0.8s ease-in;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* ===================== BUTTONS ===================== */
 button {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
+  padding: 6px 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-    background: #2980b9;
-    transform: scale(1.05);
-}
-/* ---------------- CARDS LAYOUT ---------------- */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+  background-color: #45a049;
 }
 
-/* ---------------- CARD DESIGN ---------------- */
-.card {
-    flex: 1 1 180px;        /* responsive width */
-    max-width: 200px;
-    background: #3498db;    /* default color */
-    color: white;
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    animation: slideUp 0.6s ease;
+/* ===================== FINANCIAL ABSTRACT ===================== */
+.fin-abstract {
+  margin: 20px auto;
+  padding: 15px;
+  background: #eef;
+  border-radius: 8px;
+  max-width: 950px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/* Individual card colors */
-.card:nth-child(1) { background: #3498db; }   /* About */
-.card:nth-child(2) { background: #2ecc71; }   /* Committee */
-.card:nth-child(3) { background: #e67e22; }   /* Notices */
-.card:nth-child(4) { background: #e74c3c; }   /* Login */
-
-/* ICON STYLE */
-.card i {
-    font-size: 35px;
-    margin-bottom: 10px;
-    display: block;
+.fin-abstract label {
+  font-weight: bold;
+  margin-right: 10px;
 }
 
-/* HOVER ANIMATION */
-.card:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.fin-abstract select {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
-/* ---------------- SLIDE UP ANIMATION ---------------- */
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ---------------- MOBILE RESPONSIVE ---------------- */
+/* ===================== RESPONSIVE DESIGN ===================== */
 @media (max-width: 768px) {
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-    .card {
-        max-width: 90%;
-        margin-bottom: 15px;
-    }
-}
-/* FADE-IN + BOUNCE ANIMATION */
-@keyframes fadeBounce {
-    0% { opacity: 0; transform: translateY(-20px); }
-    50% { opacity: 1; transform: translateY(10px); }
-    70% { transform: translateY(-5px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
+  .entry-form input, .entry-form select {
+    width: 100%;
+  }
 
-.fade-bounce {
-    animation: fadeBounce 0.8s ease forwards;
-}
-.notice-banner {
-    background: #f39c12;       /* Orange background */
-    color: white;              /* White text */
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: bold;
-    margin: 20px 0;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-/* Optional: fade-in + bounce */
-.fade-bounce {
-    animation: fadeBounce 0.8s ease forwards;
-}
-.summary-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 20px;
-    gap: 15px;
-}
+  .nav button {
+    margin-top: 10px;
+  }
 
-.summary-card {
-    background: white;
-    padding: 20px;
-    width: 250px;
-    text-align: center;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
-
-.summary-card:hover {
-    transform: translateY(-5px);
-}
-
-.summary-card h3 {
-    margin-bottom: 10px;
-    color: #2c3e50;
-}
-
-.summary-card p {
-    font-size: 22px;
-    font-weight: bold;
-    color: #27ae60;
-}
-.accounts-table {
-    width: 95%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.accounts-table th {
-    background: #2c3e50;
-    color: white;
-    padding: 12px;
-}
-
-.accounts-table td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-.accounts-table tr:nth-child(even) {
-    background: #f2f2f2;
+  table {
+    width: 100%;
+    font-size: 14px;
+  }
 }
